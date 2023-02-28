@@ -1,0 +1,16 @@
+[package]
+name = "rust_ppid_break_chain"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# monkey
+
+[dependencies.windows-sys]
+version = "0.45.0"
+features = [
+    "Win32_Foundation",
+    "Win32_System_Recovery",
+]
