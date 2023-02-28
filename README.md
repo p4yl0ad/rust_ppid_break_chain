@@ -4,7 +4,7 @@
 Re-wrote it using the windows-sys Rust crate.
 
 
-![source image](./img.png)
+![source image](monkey.png)
 
 ## Getting Started
 
