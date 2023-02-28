@@ -33,7 +33,7 @@ fn main() {
     let args:Vec<String> = args().collect();
     if args.len() == 1 {
         unsafe {
-            let pcwstr_name:PCWSTR = w!("doit");
+            let pcwstr_name:PCWSTR = w!("monkey");
             let h_result:HRESULT = RegisterApplicationRestart(
                 pcwstr_name,
                 0

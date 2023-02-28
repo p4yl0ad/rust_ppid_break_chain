@@ -6,6 +6,23 @@ Re-wrote it using the windows-sys Rust crate.
 
 ![source image](monkey.png)
 
+## How this works
+
+A registration for restart is placed with Windows Error Reporting which lets WERFault restart the application 
+automatically in the event that the application crashes or hangs. 
+
+A 62 second sleep is carried out to satisfy the following check detailed by the MSDN:
+`"To prevent cyclical restarts, the system will only restart the application if it has been running for a minimum of 
+60 seconds."`
+
+Once the 62 seconds are up, a crash is forced (Can be carried out by writing to a NULL pointer, however you feel really)
+An abort call is used to abort the app which results in WerFault.exe restarting the app with a new conhost.exe 
+with the commandline "monkey".
+
+The parent process WerFault.exe (i.e. PID 7680) shortly after gets closed resulting in our process having a 
+Non-existent process (7680) as its parent living inside a new conhost.exe.
+
+
 ## Getting Started
 
 ### Dependencies
