@@ -7,6 +7,9 @@
 Full credits go to gtworek
 +rep for the cool parent process de-chaining
 */
+mod getppid;
+use getppid::print_ppid;
+
 use std::{
     env::args,
     process::{exit, abort},
@@ -43,11 +46,15 @@ fn main() {
                 exit(h_result);
             }
             println!("Original parent, sleeping to make WER happy...");
+            println!("Current process details and PPID...");
+            print_ppid();
             sleep(SLEEP_MS);
             abort();
         }
     } else {
         println!("Monkey");
+        println!("New process details and PPID...");
+        print_ppid();
         sleep(POST_SLEEP_MS);
     }
 }
